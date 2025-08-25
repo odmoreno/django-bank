@@ -11,3 +11,15 @@ POSTGRES_PORT="5432"
 POSTGRES_DB="banker"
 POSTGRES_PASSWORD="Pass123456"
 BANK_NAME="NextGen Bank"
+
+
+
+https://docs.djangoproject.com/en/5.2/topics/auth/passwords/
+
+$ mkdir -p settings && touch settings/{**init**,base,local,production}.py
+
+mkdir -p requirements && touch requirements/{base,local,production}.txt
+(django-bank)
+
+python -c "import secrets; print(secrets.token_urlsafe(38))"
+
