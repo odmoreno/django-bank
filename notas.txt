@@ -23,3 +23,34 @@ mkdir -p requirements && touch requirements/{base,local,production}.txt
 
 python -c "import secrets; print(secrets.token_urlsafe(38))"
 
+
+
+USER@PCWORK MINGW64 ~/Documents/udemy/django-bank (main)
+$ mkdir -p docker/local/postgres && touch docker/local/postgres/Dockerfile
+(django-bank)
+USER@PCWORK MINGW64 ~/Documents/udemy/django-bank (main)
+$ docker network create banker_local_nw
+40ecc854fa6c433d498e66b88880984fd865a2c6a7d42db100f5b3e407b97a72
+(django-bank)
+USER@PCWORK MINGW64 ~/Documents/udemy/django-bank (main)
+$ docker network ls
+NETWORK ID     NAME                                  DRIVER    SCOPE
+40ecc854fa6c   banker_local_nw                       bridge    local
+78502f3779b2   bridge                                bridge    local
+e052e1de5cb7   connectix-backend_default             bridge    local
+7af862817e56   connectix-test-v01_default            bridge    local
+05ece8493bd0   connectix-test_default                bridge    local
+b757fb2a49ae   connectix-test_v01_default            bridge    local
+cc88a6b3bf27   connectix-test_v02_default            bridge    local
+3bd929feae52   drf-django-tenants-skeleton_default   bridge    local
+b52b5cbeea0e   host                                  host      local
+a9745d2dbb03   my-docker-project_default             bridge    local
+373aba7a95f1   none                                  null      local
+784844510dca   recipe-app-api_default                bridge    local
+b8d28db3699c   saas_tenants_default                  bridge    local
+45a2b62f76c7   tenants_default                       bridge    local
+(django-bank)
+USER@PCWORK MINGW64 ~/Documents/udemy/django-bank (main)
+
+
+docker compose -f local.yml config

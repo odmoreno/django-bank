@@ -47,7 +47,7 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 COPY --chown=django:django ./docker/local/django/entrypoint.sh /entrypoint.sh
 COPY --chown=django:django ./docker/local/django/start.sh /start.sh
 
-RUN sed -i 's/\r$//g' /entrypoint.sh /start.sh \
+RUN sed -i 's/\r$//g' /entrypoint.sh /start.sh && \
   chmod +x /entrypoint.sh /start.sh
 
 COPY --chown=django:django . ${APP_HOME}

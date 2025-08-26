@@ -6,6 +6,8 @@ set -o pipefail
 
 set -o nounset
 
+#python manage.py check_db
+
 python << END
 import sys
 import time
@@ -30,7 +32,6 @@ while True:
         "indicative of an unrecoverable error: '{}'\n".format(error)
       )
     time.sleep(3)
-
 END
 
 echo >&2 'PostgreSQL is available'
