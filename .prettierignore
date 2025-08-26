@@ -1,0 +1,5 @@
+# Ignorar todos los html dentro de templates/emails
+common/templates/emails/*.html
+
+# Si quieres ignorar toda la carpeta de templates
+common/templates/**
