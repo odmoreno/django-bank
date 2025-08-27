@@ -56,3 +56,6 @@ USER@PCWORK MINGW64 ~/Documents/udemy/django-bank (main)
 docker compose -f local.yml config
 
 docker-compose.exe -f .\local.yml up --build -d --remove-orphans
+
+
+https://nginx.org/en/docs/example.html
