@@ -59,3 +59,14 @@ docker-compose.exe -f .\local.yml up --build -d --remove-orphans
 
 
 https://nginx.org/en/docs/example.html
+
+
+PS C:\Users\USER\Documents\udemy\django-bank> pipenv shell
+Shell for C:\Users\USER\.virtualenvs\django-bank-a8sFsD6u already activated.
+New shell not activated to avoid nested environments.
+
+
+
+Portainer docker-desktop instalar
+
+pipenv install --dev watchfiles==0.22.0
