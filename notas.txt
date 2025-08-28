@@ -105,3 +105,33 @@ drwxr-xr-x 11 django django 4096 Aug 28 19:45 app/
 django@f754ebe510fe:/$
 
   -> en el host usar: sudo chown -R $USER:$USER staticfiles logs
+
+
+
+Very nice course so far, thanks!
+
+
+
+In terms of the Makefile, I just wanted to offer what worked for me on Windows. I had Docker Desktop already installed and I followed these steps:
+
+
+
+- Run the wsl --install command in a Powershell as admin
+
+- This installed (at least for me) an Ubuntu distro
+
+- I activated this using this command in the terminal: wsl -d Ubuntu
+
+- You can set it as default using: wsl --set-default Ubuntu
+
+- Follow the rest of the instructions to install Make
+
+- Open Docker Desktop go to Resources -> WSL Integration and enable the Ubuntu distro
+
+- Restart Docker Desktop and launch a new powershell terminal
+
+- Activate the WSL using wsl -d Ubuntu
+
+- Navigate to your project but keep in mind your Windows drives are automatically mounted under the /mnt directory. So C:\Users\YourUser\Project would be /mnt/c/Users/YourUser/Project
+
+- Run your Makefile with the make commands
