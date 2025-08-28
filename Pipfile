@@ -28,6 +28,7 @@ django-redis = "==5.4.0"
 
 [dev-packages]
 black = "==24.8.0"
+watchfiles = "==0.22.0"
 
 [requires]
-python_version = "3.13"
+python_version = "3.12"

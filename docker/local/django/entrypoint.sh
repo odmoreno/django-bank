@@ -8,6 +8,8 @@ set -o nounset
 
 #python manage.py check_db
 
+chown -R django:django /app/staticfiles /app/logs 2>/dev/null || true
+
 python << END
 import sys
 import time

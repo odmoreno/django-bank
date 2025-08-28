@@ -21,6 +21,9 @@ ARG BUILD_ENVIRONMENT=local
 
 ARG APP_HOME=/app
 
+ARG DJANGO_UID=1000
+ARG DJANGO_GID=1000
+
 ENV PYTHONDONTWRITEBYTECODE=1 \
   PYTHONUNBUFFERED=1 \
   BUILD_ENV=${BUILD_ENVIRONMENT}
@@ -33,8 +36,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
-RUN addgroup --system django && \
-  adduser --system --ingroup django django && \
+RUN addgroup --system --gid ${DJANGO_GID} django && \
+  adduser --system --uid ${DJANGO_UID} --ingroup django django && \
   mkdir -p ${APP_HOME}/staticfiles && \
   chown django:django ${APP_HOME}/staticfiles && \
   chmod 775 ${APP_HOME}/staticfiles

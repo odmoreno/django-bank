@@ -69,4 +69,39 @@ New shell not activated to avoid nested environments.
 
 Portainer docker-desktop instalar
 
+
+pip install --user pipenv
+pipenv shell
 pipenv install --dev watchfiles==0.22.0
+
+
+problemas en ubuntu
+docker pull postgres:16-bullseye
+docker pull nginx:1.27.0-alpine
+
+problemas con la carpeta de logs/
+crear una dentro del repo para evitar problemas de permisos con el Dockerfile de django
+
+
+failed to resolve source metadata for docker.io/library/nginx:1.27.0-alpine3.19-slim: error getting credentials - err: exit status 1, out: ``
+ :> hacer login en docker hub para evitar esto
+
+revisar permisos:
+
+odm@PCWORK:~/udemy/django-bank$ docker compose -f local.yml run --rm api bash
+
+django@f754ebe510fe:/app$ ls -ld app/
+ls: cannot access 'app/': No such file or directory
+django@f754ebe510fe:/app$ ls
+Makefile  Pipfile.lock  core_apps  interceptor.py  logs       notas.txt     staticfiles
+Pipfile   config        docker     local.yml       manage.py  requirements
+django@f754ebe510fe:/app$ ls -ld logs
+drwxr-xr-x 2 django django 4096 Aug 28 19:45 logs
+django@f754ebe510fe:/app$ ls -ld staticfiles/
+drwxr-xr-x 2 root root 4096 Aug 28 17:24 staticfiles/
+django@f754ebe510fe:/app$  cd ..
+django@f754ebe510fe:/$ ls -ld app/
+drwxr-xr-x 11 django django 4096 Aug 28 19:45 app/
+django@f754ebe510fe:/$
+
+  -> en el host usar: sudo chown -R $USER:$USER staticfiles logs
