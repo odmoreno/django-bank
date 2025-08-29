@@ -135,3 +135,14 @@ In terms of the Makefile, I just wanted to offer what worked for me on Windows. 
 - Navigate to your project but keep in mind your Windows drives are automatically mounted under the /mnt directory. So C:\Users\YourUser\Project would be /mnt/c/Users/YourUser/Project
 
 - Run your Makefile with the make commands
+
+
+
+cada que se crea un modelo o cambia:
+make makemigrations
+make migrate
+make build
+
+
+rabbitmq:
+guest/guest
