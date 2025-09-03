@@ -152,3 +152,9 @@ make build
 
 rabbitmq:
 guest/guest
+
+
+create a superUser antes que todo:
+docker compose -f local.yml run --rm api python manage.py createsuperuser
+Oscarpol95
+oscarpol@gmail.com
