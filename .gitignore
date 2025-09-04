@@ -1,4 +1,3 @@
-.vscode
 .idea
 staticfiles/
 .DS_store
@@ -397,3 +396,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+/.vscode/settings.json

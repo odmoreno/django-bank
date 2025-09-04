@@ -1,25 +1,29 @@
+x-api-base: &api_base
+  build:
+    context: .
+    dockerfile: ./docker/local/django/Dockerfile.win
+  volumes:
+    - .:/app:z
+    - ./staticfiles:/app/staticfiles
+  expose:
+  - "8000" # Nginx consume api:8000 internamente
+  env_file:
+    - ./.envs/.env.local
+  depends_on:
+    - postgres
+    - mailpit
+    - redis
+    - rabbitmq
+  command: /start.sh
+  networks:
+    - banker_local_nw
+
 services:
-  api: &api
-    build:
-      context: .
-      dockerfile: ./docker/local/django/Dockerfile.win
-    volumes:
-      - .:/app:z
-      - ./staticfiles:/app/staticfiles
-    #ports:
-    #  - "8080:8000"
-    expose:
-    - "8000"
-    env_file:
-      - ./.envs/.env.local
-    depends_on:
-      - postgres
-      - mailpit
-      - redis
-      - rabbitmq
+  api:
+    <<: *api_base
     command: /start.sh
-    networks:
-      - banker_local_nw
+    ports:
+      - "5681:5678"   # host 5681 -> contenedor 5678 (debugpy API)
 
   postgres:
     build:
@@ -67,11 +71,11 @@ services:
         - banker_local_nw
 
   celeryworker:
-    <<: *api
+    <<: *api_base
     command: /start-celeryworker.sh
 
   flower:
-    <<: *api
+    <<: *api_base
     ports:
         - "5555:5555"
     volumes:

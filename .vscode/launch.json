@@ -1,0 +1,30 @@
+{
+	"version": "0.1.0",
+	"configurations": [
+		{
+			"name": "Python: Django (Puerto 8006)",
+			"type": "debugpy",
+			"request": "launch",
+			"program": "${workspaceFolder}/manage.py",
+			"args": ["runserver", "0.0.0.0:8006"],
+			"django": true,
+			"justMyCode": true
+		},
+		{
+			"name": "Attach to Django in Docker (Puerto 5681)",
+			"type": "debugpy",
+			"request": "attach",
+			"connect": {
+				"host": "localhost",
+				"port": 5681
+			},
+			"pathMappings": [
+				{
+					"localRoot": "${workspaceFolder}", // ajusta si usas otra ruta
+					"remoteRoot": "/app" // ajusta según el Dockerfile
+				}
+			],
+			"justMyCode": false
+		}
+	]
+}
