@@ -21,6 +21,7 @@ class TimeStampedModel(models.Model):
 
 
 class ContentView(TimeStampedModel):
+    """Model to track views on content objects."""
     content_type = models.ForeignKey(
         ContentType, on_delete=models.CASCADE, verbose_name=_("Content Type")
     )
@@ -56,6 +57,7 @@ class ContentView(TimeStampedModel):
     def record_view(
         cls, content_object: Any, user: Optional[User], viewer_ip: Optional["str"]
     ) -> None:
+        """Record a view on a content object."""
         content_type = ContentType.objects.get_for_model(content_object)
         try:
             view, created = cls.objects.get_or_create(

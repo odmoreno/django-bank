@@ -8,7 +8,7 @@ from loguru import logger
 from config.settings.base import AUTH_USER_MODEL
 from core_apps.user_profile.models import Profile
 
-
+# esto es un receptor de señales
 @receiver(post_save, sender=AUTH_USER_MODEL)
 def create_user_profile(
     sender: Type[Model], instance: Model, created: bool, **kwargs: Any
@@ -19,6 +19,7 @@ def create_user_profile(
         logger.info(f"Profile created for {instance.first_name} {instance.last_name}")
 
 
+# receiver para guardar el perfil
 @receiver(post_save, sender=AUTH_USER_MODEL)
 def save_user_profile(sender: Type[Model], instance: Model, **kwargs: Any) -> None:
     instance.profile.save()

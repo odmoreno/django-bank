@@ -8,4 +8,5 @@ class UserProfileConfig(AppConfig):
     verbose_name = _("User Profile")
 
     def ready(self) -> None:
+        # Importamos las señales
         import core_apps.user_profile.signals
